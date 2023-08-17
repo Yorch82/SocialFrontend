@@ -22,13 +22,13 @@ const passwordRules = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{5,}$/;
 const registerSchema = yup.object().shape({
   name: yup.string().required('Obligatorio'),
   email: yup.string().email("Usa un email válido").required('Obligatorio'),
-  password: yup.string().min(5).matches(passwordRules, { message: "Please create a stronger password" }).required('Obligatorio'),
-  password2: yup.string().oneOf([yup.ref("password"), null], "Passwords must match").required('Obligatorio'),
-  //avatar: yup.string().required(),
+  password: yup.string().min(5).matches(passwordRules, { message: "Por favor crea una contraseña más robusta" }).required('Obligatorio'),
+  password2: yup.string().oneOf([yup.ref("password"), null], "Las contraseñas no coinciden").required('Obligatorio'),
+  myFile: yup.string(),
 });
 
 const loginSchema = yup.object().shape({
-  email: yup.string().email('invalid email').required('Obligatorio'),
+  email: yup.string().email('Email inválido').required('Obligatorio'),
   password: yup.string().required('Obligatorio'),
 });
 
@@ -37,7 +37,7 @@ const initialValuesRegister = {
   email: '',
   password: '',
   password2: '',
-  //avatar: '',
+  myFile: '',
 };
 
 const initialValuesLogin = {
@@ -55,20 +55,24 @@ const Form = () => {
   const isRegister = pageType === 'register';
 
   const register = async (values, onSubmitProps) => {
+    console.log(values)
+    console.log(onSubmitProps)
     // this allows us to send form info with image
     const formData = new FormData();
     for (let value in values) {
       formData.append(value, values[value]);
     }
-    //formData.append('avatar', values.avatar.name);
-
+    // if (values.myFile){
+    //   formData.append('avatar', values.myFile.name);
+    // }    
+    console.log(formData);
     const savedUserResponse = await fetch('http://localhost:8080/users/', {
       method: 'POST',
       body: formData,
     });
     const savedUser = await savedUserResponse.json();
     onSubmitProps.resetForm();
-
+    console.log(savedUser)
     if (savedUser) {
       setPageType('login');
     }
@@ -95,10 +99,8 @@ const Form = () => {
 
   const handleFormSubmit = async (values, onSubmitProps) => {
     if (isLogin) await login(values, onSubmitProps);
-    if (isRegister) await register(values, onSubmitProps);
-    console.log(onSubmitProps)
+    if (isRegister) await register(values, onSubmitProps);    
   };
-
   
   return (
     <Formik
@@ -137,7 +139,7 @@ const Form = () => {
                   helperText={touched.name && errors.name}
                   sx={{ gridColumn: 'span 4' }}
                 />
-                {/* <Box
+                <Box
                   gridColumn='span 4'
                   border={`1px solid ${palette.neutral.medium}`}
                   borderRadius='5px'
@@ -147,7 +149,7 @@ const Form = () => {
                     acceptedFiles='.jpg,.jpeg,.png'
                     multiple={false}
                     onDrop={(acceptedFiles) =>
-                      setFieldValue('avatar', acceptedFiles[0])
+                      setFieldValue('myFile', acceptedFiles[0])
                     }
                   >
                     {({ getRootProps, getInputProps }) => (
@@ -158,18 +160,18 @@ const Form = () => {
                         sx={{ '&:hover': { cursor: 'pointer' } }}
                       >
                         <input {...getInputProps()} />
-                        {!values.avatar ? (
+                        {!values.myFile ? (
                           <p>Añade tu imagen de perfil aquí</p>
                         ) : (
                           <FlexBetween>
-                            <Typography>{values.avatar.name}</Typography>
+                            <Typography>{values.myFile.name}</Typography>
                             <EditOutlinedIcon />
                           </FlexBetween>
                         )}
                       </Box>
                     )}
                   </Dropzone> 
-                </Box> */}
+                </Box>
               </>
             )}
 
