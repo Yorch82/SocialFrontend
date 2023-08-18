@@ -21,7 +21,7 @@ import {
     const getUser = async () => {
       const response = await fetch(`http://localhost:8080/users/getById/${userId}`, {
         method: "GET",
-        headers: { authorization: token },
+        headers: { Authorization: `Bearer ${token}` },
       });
       const data = await response.json();      
       setUser(data);
