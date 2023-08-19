@@ -20,7 +20,7 @@ const PostsWidget = ({ userId, isProfile = false }) => {
 
   const getUserPosts = async () => {
     const response = await fetch(
-      `http://localhost:8080/posts/getById/${userId}`,
+      `http://localhost:8080/posts/getByUserId/${userId}`,
       {
         method: "GET",
         headers: { Authorization: `Bearer ${token}` },
@@ -49,7 +49,7 @@ const PostsWidget = ({ userId, isProfile = false }) => {
           postAvatar,
           userAvatar,
           likes,
-          //comments,
+          commentIds,
         }) => (
           <PostWidget
             key={_id}
@@ -60,7 +60,7 @@ const PostsWidget = ({ userId, isProfile = false }) => {
             postAvatar={postAvatar}
             userAvatar={userAvatar}
             likes={likes}
-            //comments={comments}
+            commentIds={commentIds}
           />
         )
       )}

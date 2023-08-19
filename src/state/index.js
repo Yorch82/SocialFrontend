@@ -23,6 +23,7 @@ export const authSlice = createSlice({
       state.user = null;
       state.token = null;
       state.posts = [];
+      state.comments = [];
     },
     setPosts: (state, action) => {
       state.posts = action.payload.posts;
@@ -41,9 +42,19 @@ export const authSlice = createSlice({
         console.error("Sin amigos :(");
       }
     },
+    setComments: (state, action) => {
+      state.comments = action.payload.comments;
+    },
+    setComment: (state, action) => {
+      const updatedComments = state.comments.map((comment) => {
+        if (comment._id === action.payload.comment._id) return action.payload.comment;
+        return comment;
+      });
+      state.comments = updatedComments;
+    },
   },
 });
 
-export const { setMode, setLogin, setLogout, setPosts, setPost, setFriends } =
+export const { setMode, setLogin, setLogout, setPosts, setPost, setFriends, setComment, setComments } =
   authSlice.actions;
 export default authSlice.reducer;

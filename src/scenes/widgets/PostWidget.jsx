@@ -1,4 +1,4 @@
-import {
+import {  
     ChatBubbleOutlineOutlined,
     FavoriteBorderOutlined,
     FavoriteOutlined,
@@ -8,9 +8,11 @@ import {
   import FlexBetween from "../../components/FlexBetween";
   import Friend from "../../components/Friend";
   import WidgetWrapper from "../../components/WidgetWrapper";
+  import AddComment from "./AddComment";
   import { useState } from "react";
   import { useDispatch, useSelector } from "react-redux";
   import { setPost } from "../../state/index";
+  import CommentsWidget from "./CommentsWidget";
   
   const PostWidget = ({
     postId,
@@ -20,7 +22,7 @@ import {
     postAvatar,
     userAvatar,
     likes,
-    //comments,
+    commentIds,
   }) => {
     const [isComments, setIsComments] = useState(false);
     const dispatch = useDispatch();
@@ -83,7 +85,7 @@ import {
               <IconButton onClick={() => setIsComments(!isComments)}>
                 <ChatBubbleOutlineOutlined />
               </IconButton>
-              {/* <Typography>{comments.length}</Typography> */}
+              <Typography>{commentIds.length}</Typography>
             </FlexBetween>
           </FlexBetween>
   
@@ -91,19 +93,15 @@ import {
             <ShareOutlined />
           </IconButton>
         </FlexBetween>
-        {/* {isComments && (
+        {isComments && (
           <Box mt="0.5rem">
-            {comments.map((comment, i) => (
-              <Box key={`${name}-${i}`}>
-                <Divider />
-                <Typography sx={{ color: main, m: "0.5rem 0", pl: "1rem" }}>
-                  {comment}
-                </Typography>
-              </Box>
-            ))}
+            <CommentsWidget postId={postId}  />
             <Divider />
           </Box>
-        )} */}
+        )}
+        <Box mt="0.5rem">
+          <AddComment postId={postId}/>
+        </Box>
       </WidgetWrapper>
     );
   };
