@@ -12,13 +12,14 @@ import {
 } from "@mui/material";
 import {
   Search,
-  //Message,
+  Message,
   DarkMode,
   LightMode,
-  // Notifications,
-  //Help,
+  Notifications,
+  Help,
   Menu,
   Close,
+  AdminPanelSettings
 } from "@mui/icons-material";
 import { useDispatch, useSelector } from "react-redux";
 import { setMode, setLogout } from "../../state";
@@ -92,9 +93,17 @@ const Navbar = () => {
               <LightMode sx={{ color: dark, fontSize: "25px" }} />
             )}
           </IconButton>
-          {/* <Message sx={{ fontSize: "25px" }} />
+          <Message sx={{ fontSize: "25px" }} />
           <Notifications sx={{ fontSize: "25px" }} />
-          <Help sx={{ fontSize: "25px" }} /> */}
+          <Help sx={{ fontSize: "25px" }} />
+          {user.role === "admin" ? (
+                <IconButton
+                onClick={() => navigate("/admin")}
+                sx={{ fontSize: "25px" }}
+                >
+                  <AdminPanelSettings  sx={{ fontSize: "25px" }}/>
+                </IconButton>
+              ) : null }           
           <FormControl variant="standard" value={fullName}>
             <Select
               value={fullName}
@@ -167,9 +176,17 @@ const Navbar = () => {
                 <LightMode sx={{ color: dark, fontSize: "25px" }} />
               )}
             </IconButton>
-            {/* <Message sx={{ fontSize: "25px" }} />
+            <Message sx={{ fontSize: "25px" }} />
             <Notifications sx={{ fontSize: "25px" }} />
-            <Help sx={{ fontSize: "25px" }} /> */}
+            <Help sx={{ fontSize: "25px" }} />
+            {user.role === "admin" ? (
+              <IconButton
+              onClick={() => navigate("/admin")}
+              sx={{ fontSize: "25px" }}
+              >
+                <AdminPanelSettings  sx={{ fontSize: "25px" }}/>
+              </IconButton>                
+              ) : null }
             <FormControl variant="standard" value={fullName}>
               <Select
                 value={fullName}

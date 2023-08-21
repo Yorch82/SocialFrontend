@@ -7,12 +7,15 @@ import { useSelector } from 'react-redux';
 import { CssBaseline, ThemeProvider } from '@mui/material';
 import { createTheme } from '@mui/material';
 import { themeSettings } from './theme';
+import Admin from './scenes/admin/index';
+import AdminZone from './guards/AdminZone';
+import NotFound from './scenes/notFound';
 
 function App() {
   const mode = useSelector(state => state.mode);
   const theme = useMemo(() => createTheme(themeSettings(mode)), [mode]);
   const isAuth = Boolean(useSelector((state) => state.token));
-
+ 
   return (
     <div className='App'>
       <BrowserRouter>
@@ -25,6 +28,8 @@ function App() {
               element={isAuth ? <HomePage /> : <Navigate to="/" />}
             />
             <Route path='/profile/:userId' element={isAuth? <ProfilePage /> : <Navigate to="/" />} />
+            <Route path="/admin" element={isAuth? <AdminZone><Admin /></AdminZone> : <Navigate to="/" />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </ThemeProvider>
       </BrowserRouter>
