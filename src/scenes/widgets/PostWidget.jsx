@@ -47,7 +47,7 @@ import {
       const updatedPost = await response.json();
       dispatch(setPost({ post: updatedPost }));
     };
-  
+
     return (
       <WidgetWrapper m="2rem 0">
         <Friend
@@ -95,7 +95,7 @@ import {
         </FlexBetween>
         {isComments && (
           <Box mt="0.5rem">
-            <CommentsWidget postId={postId}  />
+            <CommentsWidget postId={commentIds}  />
             <Divider />
           </Box>
         )}
