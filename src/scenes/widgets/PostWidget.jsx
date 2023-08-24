@@ -13,6 +13,7 @@ import {
   import { useDispatch, useSelector } from "react-redux";
   import { setPost } from "../../state/index";
   import CommentsWidget from "./CommentsWidget";
+  import dotenv from "react-dotenv";
   
   const PostWidget = ({
     postId,
@@ -36,7 +37,7 @@ import {
     const primary = palette.primary.main;
   
     const patchLike = async () => {
-      const response = await fetch(`http://localhost:8080/posts/${postId}/like`, {
+      const response = await fetch(dotenv.REACT_APP_API_URL + `/posts/${postId}/like`, {
         method: "PATCH",
         headers: {
           Authorization: `Bearer ${token}` ,
@@ -65,7 +66,7 @@ import {
             height="auto"
             alt="post"
             style={{ borderRadius: "0.75rem", marginTop: "0.75rem" }}
-            src={`http://localhost:8080/assets/${postAvatar}`}
+            src={dotenv.REACT_APP_API_URL + `/assets/${postAvatar}`}
           />
         )}
         <FlexBetween mt="0.25rem">

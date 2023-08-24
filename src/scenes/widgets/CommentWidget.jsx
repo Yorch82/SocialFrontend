@@ -1,10 +1,11 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { setComment } from '../../state/index';
+import { setComment, setPosts } from '../../state/index';
 import WidgetWrapper from '../../components/WidgetWrapper';
-import { IconButton, Typography, useTheme } from '@mui/material';
+import { Divider, IconButton, Typography, useTheme } from '@mui/material';
 import Friend from '../../components/Friend';
 import FlexBetween from '../../components/FlexBetween';
 import { FavoriteBorderOutlined, FavoriteOutlined, ShareOutlined } from '@mui/icons-material';
+import dotenv from "react-dotenv";
 
 const CommentWidget = ({
   commentId,
@@ -27,7 +28,7 @@ const CommentWidget = ({
 
   const patchLike = async () => {
     const response = await fetch(
-      `http://localhost:8080/comments/${commentId}/like`,
+      dotenv.REACT_APP_API_URL + `/comments/${commentId}/like`,
       {
         method: 'PATCH',
         headers: {
@@ -39,6 +40,14 @@ const CommentWidget = ({
     );
     const updatedComment = await response.json();
     dispatch(setComment({ comment: updatedComment }));    
+
+    const responsePosts = await fetch(dotenv.REACT_APP_API_URL + "/posts/getAll", {
+      method: "GET",
+      headers: { Authorization: `Bearer ${token}` },
+    });
+    const data = await responsePosts.json();
+    
+    dispatch(setPosts({ posts: data }));
   };
 
   return (
@@ -53,7 +62,7 @@ const CommentWidget = ({
           height='auto'
           alt='post'
           style={{ borderRadius: '0.75rem', marginTop: '0.75rem' }}
-          src={`http://localhost:8080/assets/${commentAvatar}`}
+          src={dotenv.REACT_APP_API_URL + `/assets/${commentAvatar}`}
         />
       )}
       <FlexBetween mt="0.25rem">
@@ -67,15 +76,13 @@ const CommentWidget = ({
                 )}
               </IconButton>
               <Typography>{likeCount}</Typography>
-            </FlexBetween>
-  
-            
-          </FlexBetween>
-  
+            </FlexBetween>            
+          </FlexBetween>  
           <IconButton>
             <ShareOutlined />
           </IconButton>
         </FlexBetween>
+        <Divider /> 
     </WidgetWrapper>
   );
 };

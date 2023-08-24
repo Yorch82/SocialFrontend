@@ -28,7 +28,7 @@ function App() {
               element={isAuth ? <HomePage /> : <Navigate to="/" />}
             />
             <Route path='/profile/:userId' element={isAuth? <ProfilePage /> : <Navigate to="/" />} />
-            <Route path="/admin" element={isAuth? <AdminZone><Admin /></AdminZone> : <Navigate to="/" />} />
+            <Route path="/admin" element={<AdminZone><Admin /></AdminZone>} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </ThemeProvider>

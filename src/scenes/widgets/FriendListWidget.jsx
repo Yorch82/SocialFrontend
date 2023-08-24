@@ -4,6 +4,7 @@ import WidgetWrapper from "../../components/WidgetWrapper";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setFriends } from "../../state";
+import dotenv from "react-dotenv";
 
 const FriendListWidget = ({ userId }) => {
   const dispatch = useDispatch();
@@ -13,7 +14,7 @@ const FriendListWidget = ({ userId }) => {
 
   const getFriends = async () => {
     const response = await fetch(
-      `http://localhost:8080/users/getFriends/${userId}`,
+      dotenv.REACT_APP_API_URL + `/users/getFriends/${userId}`,
       {
         method: "GET",
         headers: { Authorization: `Bearer ${token}` },

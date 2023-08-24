@@ -9,6 +9,7 @@ import {
   import { useSelector } from "react-redux";
   import { useEffect, useState } from "react";
   import { useNavigate } from "react-router-dom";
+  import dotenv from "react-dotenv";
   
   const UserWidget = ({ userId, avatar }) => {
     const [user, setUser] = useState(null);
@@ -19,7 +20,7 @@ import {
     const medium = palette.neutral.medium;
     const main = palette.neutral.main;   
     const getUser = async () => {
-      const response = await fetch(`http://localhost:8080/users/getById/${userId}`, {
+      const response = await fetch(dotenv.REACT_APP_API_URL + `/users/getById/${userId}`, {
         method: "GET",
         headers: { Authorization: `Bearer ${token}` },
       });

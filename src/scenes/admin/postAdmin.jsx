@@ -11,8 +11,10 @@ import {
   import AddComment from "../widgets/AddComment";
   import { useState } from "react";
   import { useDispatch, useSelector } from "react-redux";
-  import { setPosts } from "../../state/index.js";
+  import { setPosts, setPost } from "../../state/index.js";
   import CommentsWidget from "../widgets/CommentsWidget";
+
+  import dotenv from "react-dotenv";
   
   const PostAdmin = ({
     postId,
@@ -30,14 +32,14 @@ import {
     const loggedInUserId = useSelector((state) => state.user._id);
     const isLiked = Boolean(likes[loggedInUserId]);
     const likeCount = Object.keys(likes).length;
-    const [post, setPost] = useState("");
+    //const [setPost] = useState("");
 
     const { palette } = useTheme();
     const main = palette.neutral.main;
     const primary = palette.primary.main;
   
     const patchLike = async () => {
-      const response = await fetch(`http://localhost:8080/posts/${postId}/like`, {
+      const response = await fetch(dotenv.REACT_APP_API_URL + `/posts/${postId}/like`, {
         method: "PATCH",
         headers: {
           Authorization: `Bearer ${token}` ,
@@ -50,7 +52,7 @@ import {
     };
 
     const deletePost = async () => {
-        const response = await fetch(`http://localhost:8080/posts/delete/${postId}`, {
+        const response = await fetch(dotenv.REACT_APP_API_URL + `/posts/delete/${postId}`, {
             method: "DELETE",
             headers: {
                 Authorization: `Bearer ${token}` ,
@@ -79,7 +81,7 @@ import {
             height="auto"
             alt="post"
             style={{ borderRadius: "0.75rem", marginTop: "0.75rem" }}
-            src={`http://localhost:8080/assets/${postAvatar}`}
+            src={dotenv.REACT_APP_API_URL + `/assets/${postAvatar}`}
           />
         )}
         <FlexBetween mt="0.25rem">

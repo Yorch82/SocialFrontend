@@ -1,4 +1,5 @@
 import { Box } from "@mui/material";
+import dotenv from "react-dotenv";
 
 const UserImage = ({ image, size = "60px" }) => {
   return (
@@ -8,7 +9,7 @@ const UserImage = ({ image, size = "60px" }) => {
         width={size}
         height={size}
         alt="user"
-        src={`http://localhost:8080/assets/${image}`}
+        src={`${dotenv.REACT_APP_API_URL}/assets/${image}`}
       />
     </Box>
   );

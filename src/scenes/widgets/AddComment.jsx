@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setComments } from '../../state/index';
+import { setComments, setPosts } from '../../state/index';
 import WidgetWrapper from '../../components/WidgetWrapper';
 import FlexBetween from '../../components/FlexBetween';
 import Dropzone from 'react-dropzone';
@@ -19,6 +19,8 @@ import {
   ImageOutlined,  
 } from '@mui/icons-material';
 
+import dotenv from "react-dotenv";
+
 const AddComment = ({ postId }) => {
   const dispatch = useDispatch();
   const { palette } = useTheme();
@@ -29,7 +31,7 @@ const AddComment = ({ postId }) => {
   const medium = palette.neutral.medium;
   const { _id } = useSelector((state) => state.user);
   const token = useSelector((state) => state.token);
- 
+
   const handleComment = async () => {
     const formData = new FormData();
     formData.append("userId", _id);
@@ -40,7 +42,7 @@ const AddComment = ({ postId }) => {
       formData.append("commentAvatar", image.name);
     }
 
-    const response = await fetch(`http://localhost:8080/comments`, {
+    const response = await fetch(dotenv.REACT_APP_API_URL + `/comments`, {
       method: "POST",
       headers: { Authorization: `Bearer ${token}` },
       body: formData,
@@ -48,8 +50,20 @@ const AddComment = ({ postId }) => {
     const comments = await response.json();
     dispatch(setComments({ comments }));
     setImage(null);
-    setComment("");    
+    setComment("");
+    
+    const responsePosts = await fetch(dotenv.REACT_APP_API_URL + "/posts/getAll", {
+      method: "GET",
+      headers: { Authorization: `Bearer ${token}` },
+    });
+    const data = await responsePosts.json();
+    
+    dispatch(setPosts({ posts: data }));
   };
+
+  
+
+
 
   return (
     <WidgetWrapper>

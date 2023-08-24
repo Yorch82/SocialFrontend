@@ -16,6 +16,8 @@ import { setLogin } from '../../state';
 import Dropzone from 'react-dropzone';
 import FlexBetween from '../../components/FlexBetween';
 
+import dotenv from "react-dotenv";
+
 const passwordRules = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{5,}$/;
 // min 5 characters, 1 upper case letter, 1 lower case letter, 1 numeric digit.
 
@@ -65,7 +67,7 @@ const Form = () => {
     formData.append('avatar', values.myFile.name);
     }    
    
-    const savedUserResponse = await fetch('http://localhost:8080/users/', {
+    const savedUserResponse = await fetch(dotenv.REACT_APP_API_URL + '/users', {
       method: 'POST',
       body: formData,
     });
@@ -78,7 +80,7 @@ const Form = () => {
   };
 
   const login = async (values, onSubmitProps) => {
-    const loggedInResponse = await fetch('http://localhost:8080/users/login', {
+    const loggedInResponse = await fetch(dotenv.REACT_APP_API_URL + '/users/login', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(values),

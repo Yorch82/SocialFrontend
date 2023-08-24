@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { setPosts } from "../../state";
 import { Box, useMediaQuery } from "@mui/material";
 import Navbar from "../navbar";
-
+import dotenv from "react-dotenv";
 
 const Admin = () => {
   const dispatch = useDispatch();
@@ -13,7 +13,7 @@ const Admin = () => {
   const { _id } = useSelector((state) => state.user);
 
   const getAllPosts = async() => {
-    const response = await fetch("http://localhost:8080/posts/getAll", {
+    const response = await fetch(dotenv.REACT_APP_API_URL + "/posts/getAll", {
       method: "GET",
       headers: { Authorization: `Bearer ${token}` },
     });

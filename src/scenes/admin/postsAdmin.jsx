@@ -3,13 +3,15 @@ import { useDispatch, useSelector } from "react-redux";
 import { setPosts } from "../../state/index";
 import PostAdmin from "./postAdmin";
 
+import dotenv from "react-dotenv";
+
 const PostsAdmin = ({ userId, isProfile = false }) => {
   const dispatch = useDispatch();
   const posts = useSelector((state) => state.posts);
   const token = useSelector((state) => state.token);
 
   const getPosts = async () => {
-    const response = await fetch("http://localhost:8080/posts/getAll", {
+    const response = await fetch(dotenv.REACT_APP_API_URL + "/posts/getAll", {
       method: "GET",
       headers: { Authorization: `Bearer ${token}` },
     });
@@ -20,7 +22,7 @@ const PostsAdmin = ({ userId, isProfile = false }) => {
 
   const getUserPosts = async () => {
     const response = await fetch(
-      `http://localhost:8080/posts/getByUserId/${userId}`,
+      dotenv.REACT_APP_API_URL + `/posts/getByUserId/${userId}`,
       {
         method: "GET",
         headers: { Authorization: `Bearer ${token}` },

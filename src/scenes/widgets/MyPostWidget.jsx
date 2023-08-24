@@ -24,6 +24,7 @@ import {
   import { useState } from "react";
   import { useDispatch, useSelector } from "react-redux";
   import { setPosts } from "../../state/index";
+  import dotenv from "react-dotenv";
   
   const MyPostWidget = ({ picturePath }) => {
     const dispatch = useDispatch();
@@ -46,7 +47,7 @@ import {
         formData.append("postAvatar", image.name);
       }
   
-      const response = await fetch(`http://localhost:8080/posts`, {
+      const response = await fetch(dotenv.REACT_APP_API_URL + '/posts', {
         method: "POST",
         headers: { Authorization: `Bearer ${token}` },
         body: formData,
