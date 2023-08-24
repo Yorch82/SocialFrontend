@@ -15,12 +15,7 @@ const Admin = () => {
   const { _id } = useSelector(state => state.user);
 
   const theme = useTheme();
-  const neutralLight = theme.palette.neutral.light;
-  const dark = theme.palette.neutral.dark;
-  const background = theme.palette.background.default;
   const primaryLight = theme.palette.primary.light;
-  const alt = theme.palette.background.alt;
-  const primaryDark = theme.palette.primary.dark;
 
   const getAllPosts = async () => {
     const response = await fetch(dotenv.REACT_APP_API_URL + '/posts/getAll', {
