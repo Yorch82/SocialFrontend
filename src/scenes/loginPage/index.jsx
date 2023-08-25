@@ -18,7 +18,7 @@ const LoginPage = () => {
           width='5%'
           height='auto'
           alt='logo'
-          src='http://localhost:3000/assets/logo.png'
+          src='https://memestack.vercel.app/assets/logo.png'
           style={{ borderRadius: '0.75rem', margin: '0.75rem 1rem' }}
         />
         <Typography fontWeight='bold' fontSize='32px' color='primary'>
