@@ -64,8 +64,7 @@ Las funcionalidades del proyecto son las siguientes:
 - Borrar o editar tus propios posts desde tu perfil.
 - Comentar posts.
 - Dar like a posts y/o comentarios.
-- Vista de admin donde borrar cualquier post.
-- Buscador de posts
+- Vista de admin donde borrar cualquier post y/o usuario.
 - Implementación de guards
 - El usuario puede subir fotos en los posts o cambiar su foto de perfil.
 - El usuario en su perfil puede ver el número de seguidores y número de a cuantos sigue
@@ -78,7 +77,7 @@ Las funcionalidades del proyecto son las siguientes:
 Pantalla de login
 
 
-![!foto](./src/assets/login.png)
+![!foto](./public/assets/login.png)
 
 
 <br><br>
