@@ -1,7 +1,7 @@
 <!-- LOGO -->
 
 <p align="center">
-  <img width="400" height="200" src='./public/assets/logo.png'>
+  <img width="200" height="200" src='./public/assets/logo.png'>
 </p>
 
 <!-- INDICE -->
@@ -127,7 +127,7 @@ Si tienes privilegios de administrador tienes una vista donde poder borrar cualq
    ```sh
    npm install
    ```
-4. Crear archivo .en y añadir la siguiente variable:
+4. Crear archivo .env y añadir la siguiente variable:
 
     ```sh
     REACT_APP_API_URL = https://memestack-backend.adaptable.app
