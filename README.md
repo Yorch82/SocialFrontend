@@ -32,6 +32,10 @@
 
 Este proyecto trata de realizar el Front de una red social en la que los usuarios se registrarán, logearán y publicarán utilizando la API de la red social.
 
+Las credenciales del usuario administrador para poder probar las funcionalidades del proyecto son las siguientes:
+
+ - User: admin@gmail.com
+ - Pasword: Admin123
 
 ### Tecnologías
 
