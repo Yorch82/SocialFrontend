@@ -77,7 +77,7 @@ Las funcionalidades del proyecto son las siguientes:
 Pantalla de login
 
 
-![!foto]('./public/assets/login.png')
+![!foto](./src/assets/login.png)
 
 
 <br><br>
