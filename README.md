@@ -1,70 +1,166 @@
-# Getting Started with Create React App
+<!-- LOGO -->
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<p align="center">
+  <img width="400" height="200" src='./public/assets/logo.png'>
+</p>
 
-## Available Scripts
+<!-- INDICE -->
+<details>
+  <summary>Indice</summary>
+  <ol>
+    <li>
+      <a href="#introducción">Introducción</a>
+      <ul>
+        <li><a href="#descripción">Tecnologías</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#descripción-del-proyecto">Descripción del proyecto</a>
+      <ul>
+        <li><a href="#instalación">Instalación</a></li>
+      </ul>
+    </li>    
+    <li><a href="#licencia">Licencia</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+    <li><a href="#conocimientos">Conocimientos</a></li>
+  </ol>
+</details>
 
-In the project directory, you can run:
+<!-- SOBRE EL PROYECTO -->
 
-### `npm start`
+## Introducción
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Este proyecto trata de realizar el Front de una red social en la que los usuarios se registrarán, logearán y publicarán utilizando la API de la red social.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
+### Tecnologías
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Aquí presentamos las herramientas empleadas en este proyecto:
 
-### `npm run build`
+- [React](https://es.reactjs.org/)
+- [Redux](https://es.redux.js.org/)
+- [Router](https://reactrouter.com/)
+- [JavaScript](https://developer.mozilla.org/es/docs/Web/JavaScript)
+- [Material UI](https://mui.com)
+- [Yup](https://www.npmjs.com/package/yup)
+- [Formik](https://formik.org/)
+- [React-dotenv](https://www.npmjs.com/package/react-dotenv)
+- [Cypress](https://www.cypress.io/)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+<!-- DESCRIPCION -->
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Descripción
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Esta red social es una red hecha por y para programadores. En ella podrás compartir tus mejores memes del mundo de la programación. 
 
-### `npm run eject`
+Proyecto programado con Stack MERN.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## FrontEnd Red Social
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Las funcionalidades del proyecto son las siguientes:
+- Registro de usuarios.
+- Login de usuarios.
+- Publicar post.
+- Borrar o editar tus propios posts desde tu perfil.
+- Comentar posts.
+- Dar like a posts y/o comentarios.
+- Vista de admin donde borrar cualquier post.
+- Buscador de posts
+- Implementación de guards
+- El usuario puede subir fotos en los posts o cambiar su foto de perfil.
+- El usuario en su perfil puede ver el número de seguidores y número de a cuantos sigue
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## GUÍA DE USO
 
-## Learn More
+<br><br>
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Pantalla de login
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
+![!foto](./src/assets/login.png)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Analyzing the Bundle Size
+<br><br>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Si no estás registrado puedes hacerlo en la pantalla de registro
 
-### Making a Progressive Web App
+![foto](./src/assets/register.png)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+<br><br>
 
-### Advanced Configuration
+Una vez registrado y loggeado accedes a la vista principal de los posts publicados donde puedes darle like al que más te guste así como entrar en detalle del post y comentarlo
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+![foto](./src/assets/mainpost.png)
 
-### Deployment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+<br><br>
+ 
+ Con el botón de share your meme podrás compartir tu meme más gracioso
 
-### `npm run build` fails to minify
+![foto](./src/assets/post.png)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+<br><br>
+
+Si haces click sobre la foto de tu avatar podrás acceder a tu perfil o desconectarte de la sesión. En tu perfil podrás editar o borrar tu posts
+
+![foto](./src/assets/profile1.png)
+![foto](./src/assets/profile2.png)
+
+<br><br>
+
+Si tienes privilegios de administrador tienes una vista donde poder borrar cualquier post que no cumpla las condiciones de la página.
+
+![foto](./src/assets/admin.png)
+
+
+
+### Instalación
+
+1. Para la instalación de la aplicación has de clonarte el siguiente repositorio:
+
+   ```sh
+    https://github.com/Yorch82/SocialFrontend.git
+   ```
+
+2. Una vez clonado has de instalar las dependencias del proyecto:
+   ```sh
+   npm install
+   ```
+4. Crear archivo .en y añadir la siguiente variable:
+
+    ```sh
+    REACT_APP_API_URL = https://memestack-backend.adaptable.app
+    ```
+3. Iniciar proyecto:
+    ```sh
+    npm start
+   ```
+<!-- ROADMAP -->
+
+## Experiencia
+
+- [x] Redux
+- [x] Componentes
+- [x] Estados y ciclo de vida de componentes
+
+
+<!-- LICENCIA -->
+
+## Licencia
+
+Este programa es de código abierto y puede ser utilizado por cualquier persona que lo desee.
+
+<!-- CONTACTO -->
+
+## Contacto
+
+Jorge - [gitHub](https://github.com/yorch82)
+
+<!-- CONCOCIMIENTOS -->
+
+## Conocimientos
+
+- [x] React
+- [x] Redux
+
