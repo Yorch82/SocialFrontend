@@ -95,7 +95,7 @@ Una vez registrado y loggeado accedes a la vista principal de los posts publicad
 
 <br><br>
  
- Con el botón de share your meme podrás compartir tu meme más gracioso
+ Con el botón de POST podrás compartir tu meme más gracioso
 
 ![foto](./src/assets/post.png)
 
@@ -104,7 +104,6 @@ Una vez registrado y loggeado accedes a la vista principal de los posts publicad
 Si haces click sobre la foto de tu avatar podrás acceder a tu perfil o desconectarte de la sesión. En tu perfil podrás editar o borrar tu posts
 
 ![foto](./src/assets/profile1.png)
-![foto](./src/assets/profile2.png)
 
 <br><br>
 
